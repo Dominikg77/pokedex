@@ -1,9 +1,12 @@
 body {
     margin: 0;
+    margin-bottom: 50px;
     background-color: blueviolet;
 }
 
 nav {
+    position: fixed;
+    width: 100vw;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -26,7 +29,9 @@ nav input {
 
 #pokedex {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    padding-top: 100px;
 }
 
 .container-main {
@@ -45,6 +50,12 @@ nav input {
     -moz-border-radius: 40px;
     -ms-border-radius: 40px;
     -o-border-radius: 40px;
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px 0px 38px -1px rgba(209, 209, 209, 0.35);
+    box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px 0px 38px -1px rgba(209, 209, 209, 0.35);
+}
+
+.container-main:hover {
+    opacity: 0.75;
 }
 
 .main-info-container {
@@ -87,7 +98,7 @@ nav input {
     z-index: 999;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +106,14 @@ nav input {
 }
 
 .container-spez-info-width {
-    width: 350px;
+    width: 375px;
+    -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px 0px 38px -1px rgba(209, 209, 209, 0.35);
+    box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 0px 0px 38px -1px rgba(209, 209, 209, 0.35);
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
 }
 
 .dialog-info {
@@ -108,7 +126,7 @@ nav input {
     padding-bottom: 50px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    height: 220px;
+    height: 240px;
 }
 
 .dialog-types {
@@ -141,13 +159,37 @@ nav input {
 #second-info-dialog img {
     margin-top: -100px;
     margin-bottom: 20px;
+    width: 280px;
+    object-fit: contain;
+    height: 180px;
 }
 
 .spez-info-container {
     font-size: 18px;
+    width: 100%;
 }
 
-table {
-    border-collapse: separate;
-    border-spacing: 10px 15px;
+.spez-info {
+    margin: 8px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nr-diagram {
+    width: 120px;
+    height: 18px;
+    background-color: black;
+    color: white;
+    border-radius: 2px;
+    font-size: 15px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.nr-digram-bar {
+    display: flex;
+    justify-content: center;
 }

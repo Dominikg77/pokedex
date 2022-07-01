@@ -4,7 +4,7 @@ let allPokemon = [];
 
 
 async function loadPokemon() { // async benötigetes da es await drin hat
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 60; i++) {
         const pokemon_url = url + (i + 1);
         let response = await fetch(pokemon_url); // fetch() funktion zum auf API zugreifen / await ist ein warte befehl
         currentPokemon = await response.json(); // wird zu einem JSON /
@@ -62,16 +62,18 @@ function renderDialog(i) {
 </div>
 </div>
 `;
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < 6; j++) {
         let attack = allPokemon[i][`stats`][j][`stat`][`name`];
         let nr = allPokemon[i][`stats`][j][`base_stat`];
+        let nrBar = nr / 1.25;
         let mainContainer = document.getElementById('second-info-dialog');
         mainContainer.innerHTML += `
         <div class="spez-info-container">
-    <table>
-    <td> ${attack} </td>
-    <td> ${nr} </td>
-    <table>
+    <div class="spez-info" >
+    <div class="attack" > ${attack}: </div>
+    <div class="nr-diagram" > 
+    <div class="nr-digram-bar" style="width: ${nrBar}%; background-color: red"> ${nr} </div>
+    </div>
     </div>
     `;
     }
