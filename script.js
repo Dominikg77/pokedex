@@ -3,20 +3,20 @@
  let allPokemon = [];
 
 
- async function loadPokemon() {
+ async function loadPokemon() { // async benötigetes da es await drin hat
      for (let i = 0; i < 20; i++) {
          const pokemon_url = url + (i + 1);
-         let response = await fetch(pokemon_url);
-         currentPokemon = await response.json();
-         allPokemon.push(currentPokemon);
+         let response = await fetch(pokemon_url); // fetch() funktion zum auf API zugreifen / await ist ein warte befehl
+         currentPokemon = await response.json(); // wird zu einem JSON /
+         allPokemon.push(currentPokemon); // Json an ein Array zu weisen
          renderPokemonInfoMain(i);
      }
 
  }
 
  function renderPokemonInfoMain(i) {
-     let name = allPokemon[i][`name`];
-     let types = allPokemon[i][`types`][0][`type`][`name`];
+     let name = allPokemon[i][`name`]; // zugreifen auf den namen 
+     let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
      let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
      let mainContainer = document.getElementById('pokedex');
      mainContainer.innerHTML += '';
