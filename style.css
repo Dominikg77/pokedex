@@ -78,6 +78,10 @@ nav input {
 
 /*Sepz Info*/
 
+.d-none {
+    display: none;
+}
+
 .container-spez-info {
     position: fixed;
     z-index: 999;
@@ -87,8 +91,63 @@ nav input {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.d-none {
-    display: none;
+.container-spez-info-width {
+    width: 350px;
+}
+
+.dialog-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FB6C6C;
+    color: white;
+    padding: 10px 50px;
+    padding-bottom: 50px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    height: 220px;
+}
+
+.dialog-types {
+    margin-top: -12px;
+    margin-left: 8px;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.381);
+    text-align: center;
+    border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+
+#second-info-dialog {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin-top: -36px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+
+#second-info-dialog img {
+    margin-top: -100px;
+    margin-bottom: 20px;
+}
+
+.spez-info-container {
+    font-size: 18px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px 15px;
 }
