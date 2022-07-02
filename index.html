@@ -17,7 +17,13 @@
     <!--Nav Leiste-->
     <nav>
         <h1>Pokédex</h1>
-        <input type="search" name="" id="" placeholder="suche">
+        <div class="nav-right">
+            <input type="text" name="search" id="" placeholder="Suchen" onkeyup="filterNames()">
+            <div>
+                <input type="number" id="number-pokemons" placeholder="Anzahl Pokemons">
+                <button onclick="newNumber()">Anzeigen</button>
+            </div>
+        </div>
     </nav>
 
     <!--Nav Pokedex Main-->
