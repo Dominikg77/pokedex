@@ -22,12 +22,13 @@ function renderPokemonInfoMain(i) {
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML += '';
     mainContainer.innerHTML += generateMainHtml(i, name, types, img);
+    bgColor();
 }
 
 
 function generateMainHtml(i, name, types, img) {
     return `
-     <div onclick="renderDialog(${i})" class="container-main" id="pokex-container-${i}">
+     <div onclick="renderDialog(${i})"  class="container-main" id="background-color-main(${i})">
      <div class="main-info-container">
 
      <h1 id="pokemon-name">${name}</h1>
@@ -42,6 +43,17 @@ function generateMainHtml(i, name, types, img) {
      `;
 }
 
+
+function bgColor() {
+    for (let i = 0; i < allPokemon.length; i++) {
+        let name = allPokemon[i].types[0].type.name;
+        if (name == name) {
+            document.getElementById(`background-color-main(${i})`).classList.add(name)
+        };
+    }
+}
+
+
 function renderDialog(i) {
     let name = allPokemon[i][`name`];
     let types = allPokemon[i][`types`][0][`type`][`name`];
@@ -52,15 +64,15 @@ function renderDialog(i) {
     let mainContainer = document.getElementById('dialog');
     mainContainer.innerHTML = `
 <div class="container-spez-info" >
-<div class="container-spez-info-width" >
-<div class="dialog-info" >
+<div class="container-spez-info-width" onclick="notClose(event)" >
+<div class="dialog-info" id="background-color-card(${i})" >
 <h1>${name}</h1>
 </div>
 <div id="second-info-dialog" >
 <div class="image" >
-<img src="img/left.png" id="left-Image">
+<img src="img/left.png" id="left-Image" onclick="moveLeft(${i})">
 <img src="${img}" id="pokomon-Image">
-<img src="img/right.png" id="right-Image">
+<img src="img/right.png" id="right-Image" onclick="moveRight(${i})">
 </div>
 <div class="spez-over-info-container" >
 <div class="spez-over-info" >
@@ -87,6 +99,7 @@ function renderDialog(i) {
 </div>
 </div>
 `;
+
     for (let j = 0; j < 6; j++) {
         let attack = allPokemon[i][`stats`][j][`stat`][`name`];
         let nr = allPokemon[i][`stats`][j][`base_stat`];
@@ -102,11 +115,45 @@ function renderDialog(i) {
     </div>
     `;
     }
+    cardColor(i);
+}
+
+function notClose(event) {
+    event.stopPropagation();
 }
 
 
 function closeDialog() {
     document.getElementById(`dialog`).classList.add(`d-none`);
+}
+
+
+function moveRight(i) {
+    if (i < allPokemon.length - 1) {
+        i++
+    } else {
+        i = 0
+    }
+    document.getElementById('dialog').innerHTML = ``;
+    renderDialog(i);
+}
+
+function moveLeft(i) {
+    if (i !== 0) {
+        i--
+    } else {
+        i = allPokemon.length - 1
+    }
+    document.getElementById('dialog').innerHTML = ``;
+    renderDialog(i);
+}
+
+
+function cardColor(i) {
+    let name = allPokemon[i].types[0].type.name;
+    if (name == name) {
+        document.getElementById(`background-color-card(${i})`).classList.add(name)
+    }
 }
 
 
