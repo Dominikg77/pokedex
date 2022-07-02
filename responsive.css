@@ -44,7 +44,7 @@
         width: 350px;
     }
     .dialog-info {
-        height: 180px;
+        height: 150px;
     }
     .spez-over-info {
         margin-top: 0px;
@@ -55,5 +55,11 @@
     #second-info-dialog img {
         width: 180px;
         height: 140px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container-spez-info-width {
+        margin-bottom: 90px;
     }
 }
