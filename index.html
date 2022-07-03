@@ -27,10 +27,10 @@
 
         <h1>Pokédex</h1>
         <div class="nav-right">
-            <input type="text" name="search" id="search-pokemon" placeholder="Suchen" onkeyup="filterNames()">
+            <input type="text" autocomplete="off" name="search" id="search-pokemon" placeholder="Suchen" onkeyup="filterNames()">
             <div>
-                <input type="number" id="number-pokemons" min="1" placeholder="Anzahl Pokemons" value="30">
-                <button onclick="newNumber()">Anzeigen</button>
+                <input type="number" id="number-pokemons" min="1" placeholder="Anzahl Pokemons" value="30" required>
+                <button id="action-button" onclick="newNumber()">Anzeigen</button>
             </div>
         </div>
     </nav>

@@ -4,7 +4,6 @@ let allPokemon = [];
 let numberOfPokemon = 30;
 
 
-
 async function loadPokemon() { // async benötigetes da es await drin hat
     for (let i = 0; i < numberOfPokemon; i++) {
         const pokemon_url = url + (i + 1);
@@ -17,6 +16,7 @@ async function loadPokemon() { // async benötigetes da es await drin hat
 
 }
 
+
 function renderPokemonInfoMain(i) {
     let name = allPokemon[i][`name`]; // zugreifen auf den namen 
     let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
@@ -24,84 +24,40 @@ function renderPokemonInfoMain(i) {
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML += '';
     mainContainer.innerHTML += generateMainHtml(i, name, types, img);
-    bgColor();
+    bgColor(i);
 }
 
 
 
-function bgColor() {
-    for (let i = 0; i < allPokemon.length; i++) {
-        let name = allPokemon[i].types[0].type.name;
-        if (name == name) {
-            document.getElementById(`background-color-main(${i})`).classList.add(name)
-        };
-    }
+function bgColor(i) {
+
+    let name = allPokemon[i].types[0].type.name;
+    if (name == name) {
+        document.getElementById(`background-color-main(${i})`).classList.add(name)
+    };
 }
+
 
 
 function renderDialog(i) {
     let name = allPokemon[i][`name`];
     let types = allPokemon[i][`types`][0][`type`][`name`];
     let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
-    let height = allPokemon[i][`height`]; // zugreifen auf den namen 
-    let weight = allPokemon[i][`weight`]; // zugreifen auf den namen 
+    let height = allPokemon[i][`height`];
+    let weight = allPokemon[i][`weight`];
     document.getElementById(`dialog`).classList.remove(`d-none`);
     let mainContainer = document.getElementById('dialog');
-    mainContainer.innerHTML = `
-<div class="container-spez-info" >
-<div class="container-spez-info-width" onclick="notClose(event)" >
-<div class="dialog-info" id="background-color-card(${i})" >
-<h1>${name}</h1>
-</div>
-<div id="second-info-dialog" >
-<div class="image" >
-<img src="img/left.png" id="left-Image" onclick="moveLeft(${i})">
-<img src="${img}" id="pokomon-Image">
-<img src="img/right.png" id="right-Image" onclick="moveRight(${i})">
-</div>
-<div class="spez-over-info-container" >
-<div class="spez-over-info" >
-<span class="margin-bottom-spez" > <b> Typ </b> </span>
-<span>${types}</span>
-</div>
-
-
-<div class="spez-over-info" >
-<span class="margin-bottom-spez" > <b> Height</b></span>
-<span>${height} ft</span>
-</div>
-
-
-<div class="spez-over-info" >
-<span class="margin-bottom-spez" > <b> Weight</b></span>
-<span>${weight} lbs</span>
-</div>
-
-
-</div>
-
-</div>
-</div>
-</div>
-`;
-
+    mainContainer.innerHTML = generateRenderDialogHtml(name, img, types, height, weight, i);
     for (let j = 0; j < 6; j++) {
         let attack = allPokemon[i][`stats`][j][`stat`][`name`];
         let nr = allPokemon[i][`stats`][j][`base_stat`];
         let nrBar = nr / 1.25;
         let mainContainer = document.getElementById('second-info-dialog');
-        mainContainer.innerHTML += `
-        <div class="spez-info-container">
-    <div class="spez-info" >
-    <div class="attack" > <b> ${attack}</b> </div>
-    <div class="nr-diagram" > 
-    <div class="nr-digram-bar" style="width: ${nrBar}%; background-color: green"> ${nr} </div>
-    </div>
-    </div>
-    `;
+        mainContainer.innerHTML += generateSpezInfoHtml(attack, nrBar, nr);
     }
     cardColor(i);
 }
+
 
 function notClose(event) {
     event.stopPropagation();
@@ -123,6 +79,7 @@ function moveRight(i) {
     renderDialog(i);
 }
 
+
 function moveLeft(i) {
     if (i !== 0) {
         i--
@@ -143,18 +100,50 @@ function cardColor(i) {
 
 
 function newNumber() {
+    let mainContainer = document.getElementById('pokedex');
+    mainContainer.innerHTML = '';
     let inputLoad = document.getElementById(`number-pokemons`).value;
-    numberOfPokemon += parseInt(inputLoad);
-    console.log(`nr`, numberOfPokemon)
-    loadPokemon();
-    document.getElementById(`number-pokemons`).value = ``;
+    numberOfPokemon = parseInt(inputLoad);
+
+    if (inputLoad > 0) {
+        loadPokemon();
+        document.getElementById(`number-pokemons`).value = ``;
+    } else {
+        alert(`bitte min. 1 Eingeben`)
+    }
 }
 
 
+
+
+
+
+//Funktionieren noch nicht 
 function filterNames() {
     let search = document.getElementById('search-pokemon').value;
     search = search.toLowerCase();
     let found = document.getElementById('pokedex');
     found.innerHTML = '';
     definePokemon(search, found);
+    //
+}
+
+//
+
+function definePokemon(search, found) {
+    for (let i = 0; i < allPokemon.length; i++) {
+        let name = allPokemon[i].name;
+        let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
+
+        whereIsTheMonster(name, types, i, search, found);
+    };
+}
+
+function whereIsTheMonster(name, types, i, search, found) {
+    if (pokemon.toLowerCase().includes(search) && name == name || name.toLowerCase().includes(search) && name == name || pokeid.includes(search) && name == name) {
+        found.innerHTML += searchPreviewTemp(name, i)
+        document.getElementById(`background-color-main(${i})`).classList.add(types);
+    } else {
+        showPreviewTemp(name);
+    }
 }

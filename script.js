@@ -24,19 +24,19 @@ function renderPokemonInfoMain(i) {
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML += '';
     mainContainer.innerHTML += generateMainHtml(i, name, types, img);
-    bgColor();
+    bgColor(i);
 }
 
 
 
-function bgColor() {
-    for (let i = 0; i < allPokemon.length; i++) {
-        let name = allPokemon[i].types[0].type.name;
-        if (name == name) {
-            document.getElementById(`background-color-main(${i})`).classList.add(name)
-        };
-    }
+function bgColor(i) {
+
+    let name = allPokemon[i].types[0].type.name;
+    if (name == name) {
+        document.getElementById(`background-color-main(${i})`).classList.add(name)
+    };
 }
+
 
 
 function renderDialog(i) {
@@ -99,25 +99,51 @@ function cardColor(i) {
 }
 
 
-
-
-//Funktionieren noch nicht 
-
 function newNumber() {
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML = '';
     let inputLoad = document.getElementById(`number-pokemons`).value;
-    numberOfPokemon += parseInt(inputLoad);
-    loadPokemon();
-    document.getElementById(`number-pokemons`).value = ``;
+    numberOfPokemon = parseInt(inputLoad);
+
+    if (inputLoad > 0) {
+        loadPokemon();
+        document.getElementById(`number-pokemons`).value = ``;
+    } else {
+        alert(`bitte min. 1 Eingeben`)
+    }
 }
 
-/*
+
+
+
+
+
+//Funktionieren noch nicht 
 function filterNames() {
     let search = document.getElementById('search-pokemon').value;
     search = search.toLowerCase();
     let found = document.getElementById('pokedex');
     found.innerHTML = '';
     definePokemon(search, found);
+
 }
-*/
+
+
+function definePokemon(search, found) {
+    for (let i = 0; i < allPokemon.length; i++) {
+        let name = allPokemon[i].name;
+        let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
+        let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
+        whereIsTheMonster(name, types, i, search, found, img);
+    };
+}
+
+
+function whereIsTheMonster(name, types, i, search, found, img) {
+    if (pokemon.toLowerCase().includes(search) && name == name || name.toLowerCase().includes(search) && name == name || pokeid.includes(search) && name == name) {
+        found.innerHTML += searchPreviewTemp(name, i)
+        document.getElementById(`background-color-main(${i})`).classList.add(types);
+    } else {
+        generateMainHtml(i, name, types, img);
+    }
+}
