@@ -10,6 +10,10 @@
 }
 
 @media screen and (max-width: 800px) {
+    .loading-img {
+        width: 220px;
+        height: 220px;
+    }
     nav {
         margin-top: -12px;
         flex-direction: column;

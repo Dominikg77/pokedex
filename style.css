@@ -2,71 +2,66 @@ html {
     scroll-behavior: smooth;
 }
 
-.grass {
-    background-image: linear-gradient(to bottom, #6ec95a, #6ec95a, #6ec95a, #6ec95a, #6ec95a, #68c454, #62c04e, #5cbb48, #4eb03a, #40a62b, #309b1a, #1d9100);
-}
-
-.bug {
-    background-image: linear-gradient(to bottom, #7bc42b, #7bc42b, #7bc42b, #7bc42b, #7bc42b, #75bc27, #6eb324, #68ab20, #5a9918, #4d870f, #407507, #346400);
-}
-
-.fire {
-    background-image: linear-gradient(to bottom, #f4803e, #f4803e, #f4803e, #f4803e, #f4803e, #ed7a39, #e67434, #df6e2f, #d06124, #c15419, #b2480c, #a33b00);
-}
-
-.ice {
-    background-image: linear-gradient(to bottom, #36d1c0, #36d1c0, #36d1c0, #36d1c0, #36d1c0, #33cdbc, #2fc9b8, #2cc5b4, #24bcab, #1bb3a2, #10aa99, #00a190);
-}
-
-.water {
-    background-image: linear-gradient(to bottom, #2e90d9, #2e90d9, #2e90d9, #2e90d9, #2e90d9, #2b8bd3, #2885cc, #2580c6, #1e74b8, #1569aa, #0b5d9d, #00528f);
-}
-
-.psychic {
-    background-image: linear-gradient(to bottom, #ff6578, #ff6578, #ff6578, #ff6578, #ff6578, #f85e6f, #f05767, #e9505e, #d8404b, #c62f38, #b41c26, #a20014);
-}
-
-.normal {
-    background-image: linear-gradient(to bottom, #909aa2, #909aa2, #909aa2, #909aa2, #909aa2, #8e979e, #8d939b, #8b9097, #87898f, #828386, #7c7c7e, #767676);
-}
-
-.electric {
-    background-image: linear-gradient(to bottom, #fcd236, #fcd236, #fcd236, #fcd236, #fcd236, #f5cb32, #edc42e, #e6bd2a, #d5ae21, #c59e17, #b4900c, #a48100);
-}
-
-.poison {
-    background-image: linear-gradient(to bottom, #b963cb, #b963cb, #b963cb, #b963cb, #b963cb, #b55dc7, #b056c4, #ac50c0, #a241b8, #9832af, #8e1fa7, #84009f);
-}
-
-.ground {
-    background-image: linear-gradient(to bottom, #ec7241, #ec7241, #ec7241, #ec7241, #ec7241, #e66d3c, #e06737, #da6232, #cc5627, #bf491b, #b13d0e, #a43001);
-}
-
-.fighting {
-    background-image: linear-gradient(to bottom, #c4302f, #c4302f, #c4302f, #c4302f, #c4302f, #c02d2b, #bc2928, #b82624, #af1e1c, #a51613, #9c0c0a, #930100);
-}
-
-.rock {
-    background-image: linear-gradient(to bottom, #c8b78a, #c8b78a, #c8b78a, #c8b78a, #c8b78a, #c6b280, #c3ae76, #c1a96c, #bc9e56, #b7933f, #b18827, #ac7d00);
-}
-
-.ghost {
-    background-image: linear-gradient(to bottom, #6748af, #6748af, #6748af, #6748af, #6748af, #6444ad, #6040aa, #5d3ca8, #5533a3, #4d2a9d, #452198, #3c1792);
-}
-
-.dragon {
-    background-image: linear-gradient(to bottom, #006cc6, #006cc6, #006cc6, #006cc6, #006cc6, #0069c0, #0066bb, #0063b5, #005ca8, #00559b, #004e8e, #004782);
-}
-
-.fairy {
-    background-image: linear-gradient(to bottom, #f298ad, #f298ad, #f298ad, #f298ad, #f298ad, #ef8fa5, #ec879d, #e97e95, #e16a82, #d95570, #cf3f5d, #c5234a);
-}
-
 body {
+    overflow-x: hidden;
     margin: 0;
     margin-bottom: 50px;
     background-color: rgba(0, 0, 0, 0.8);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.loading-screen {
+    position: absolute;
+    z-index: 999;
+    background-color: rgba(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 25px;
+    animation-name: beispiel;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+@keyframes beispiel {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+    }
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
 }
 
 

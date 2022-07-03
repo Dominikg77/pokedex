@@ -9,6 +9,7 @@
     <link rel="Icon" href="img/pokeball.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="background.css">
     <script src="script.js"></script>
     <script src="templates.js"></script>
 
@@ -16,14 +17,19 @@
 
 <body onload="loadPokemon()">
 
+    <div class="loading-screen" id="load-sccren">
+        <img class="loading-img" src="img/pikachu.png" alt="">
+        <div class="loading-text">Loading...</div>
+    </div>
+
     <!--Nav Leiste-->
     <nav>
 
         <h1>Pokédex</h1>
         <div class="nav-right">
-            <input type="text" name="search" id="" placeholder="Suchen" onkeyup="filterNames()">
+            <input type="text" name="search" id="search-pokemon" placeholder="Suchen" onkeyup="filterNames()">
             <div>
-                <input type="number" id="number-pokemons" placeholder="Anzahl Pokemons">
+                <input type="number" id="number-pokemons" min="1" placeholder="Anzahl Pokemons" value="30">
                 <button onclick="newNumber()">Anzeigen</button>
             </div>
         </div>

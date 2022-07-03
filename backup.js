@@ -4,6 +4,7 @@ let allPokemon = [];
 let numberOfPokemon = 30;
 
 
+
 async function loadPokemon() { // async benötigetes da es await drin hat
     for (let i = 0; i < numberOfPokemon; i++) {
         const pokemon_url = url + (i + 1);
@@ -11,6 +12,7 @@ async function loadPokemon() { // async benötigetes da es await drin hat
         currentPokemon = await response.json(); // wird zu einem JSON /
         allPokemon.push(currentPokemon); // Json an ein Array zu weisen
         renderPokemonInfoMain(i);
+        document.getElementById(`load-sccren`).classList.add(`d-none`);
     }
 
 }
@@ -25,23 +27,6 @@ function renderPokemonInfoMain(i) {
     bgColor();
 }
 
-
-function generateMainHtml(i, name, types, img) {
-    return `
-     <div onclick="renderDialog(${i})"  class="container-main" id="background-color-main(${i})">
-     <div class="main-info-container">
-
-     <h1 id="pokemon-name">${name}</h1>
-     <div class="second-home-info">
-         <p id="home-info"> ${types} </p>
-     </div>
- </div>
- <div class="main-container-image">
-     <img src="${img}" id="pokomon-Image">
- </div>
- </div>
-     `;
-}
 
 
 function bgColor() {
@@ -158,22 +143,18 @@ function cardColor(i) {
 
 
 function newNumber() {
-    numberOfPokemon = document.getElementById(`number-pokemons`).value;
+    let inputLoad = document.getElementById(`number-pokemons`).value;
+    numberOfPokemon += parseInt(inputLoad);
+    console.log(`nr`, numberOfPokemon)
     loadPokemon();
     document.getElementById(`number-pokemons`).value = ``;
 }
 
 
-// Attack Infos 
-/*
-for (let i = 0; i < 5; i++) {
-        let attack = currentPokoemon[`stats`][i][`stat`][`name`];
-        let nr = currentPokoemon[`stats`][i][`base_stat`];}
-        document.getElementById(`spezifikationen-table`).innerHTML += ` 
-        <tr>
-         <td> ${attack} : </td> 
-         <td> ${nr} </td>
-        </tr>
-        `
-    }
-*/
+function filterNames() {
+    let search = document.getElementById('search-pokemon').value;
+    search = search.toLowerCase();
+    let found = document.getElementById('pokedex');
+    found.innerHTML = '';
+    definePokemon(search, found);
+}
