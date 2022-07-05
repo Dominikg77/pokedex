@@ -10,6 +10,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+nav h1 {
+    color: #FF8C00;
+    font-weight: 900;
+    font-size: 44px;
+    letter-spacing: 5px;
+}
+
 .loading-screen {
     position: absolute;
     z-index: 999;
@@ -80,8 +87,9 @@ nav {
 }
 
 nav input {
-    background-color: blueviolet;
-    border: 0px;
+    background-color: #4D5D53;
+    border: 1px solid #39FF14;
+    color: whitesmoke;
     padding: 16px;
     font-size: 20px;
     margin-left: 18px;
@@ -100,8 +108,8 @@ nav input {
 }
 
 .nav-right button {
-    background-color: blueviolet;
-    border: none;
+    background-color: #4D5D53;
+    border: 1px solid #39FF14;
     color: whitesmoke;
     height: 50px;
     font-size: 20px;
@@ -124,6 +132,13 @@ nav input {
     justify-content: center;
     flex-wrap: wrap;
     padding-top: 100px;
+}
+
+#pokedex h1 {
+    color: black;
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-bottom: 8px;
 }
 
 .container-main {
@@ -159,7 +174,7 @@ nav input {
 
 .second-home-info {
     margin-left: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 22px;
     width: 100px;
     background-color: rgba(255, 255, 255, 0.381);
     text-align: center;
@@ -234,7 +249,9 @@ nav input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: black;
+    text-transform: capitalize;
+    font-weight: bolder;
     padding: 10px 50px;
     padding-bottom: 50px;
     border-top-left-radius: 40px;

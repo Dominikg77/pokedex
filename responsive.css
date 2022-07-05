@@ -21,11 +21,15 @@
     }
     nav input {
         padding: 8px;
-        font-size: 13px;
+        font-size: 16px;
         margin-bottom: 12px;
     }
+    nav h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
     #number-pokemons {
-        margin-left: 60px;
+        margin-left: 90px;
     }
     .nav-right {
         flex-direction: column;
@@ -33,7 +37,7 @@
     }
     .nav-right button {
         height: 30px;
-        font-size: 8px;
+        font-size: 14px;
     }
     #pokedex {
         padding-top: 150px;
@@ -65,5 +69,21 @@
 @media screen and (max-width: 450px) {
     .container-spez-info-width {
         margin-bottom: 90px;
+    }
+    nav h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    nav input {
+        padding: 8px;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    .nav-right button {
+        height: 30px;
+        font-size: 10px;
+    }
+    #number-pokemons {
+        margin-left: 70px;
     }
 }

@@ -28,7 +28,6 @@ function renderPokemonInfoMain(i) {
 }
 
 
-
 function bgColor(i) {
 
     let name = allPokemon[i].types[0].type.name;
@@ -36,7 +35,6 @@ function bgColor(i) {
         document.getElementById(`background-color-main(${i})`).classList.add(name)
     };
 }
-
 
 
 function renderDialog(i) {
@@ -114,11 +112,6 @@ function newNumber() {
 }
 
 
-
-
-
-
-//Funktionieren noch nicht 
 function filterNames() {
     let search = document.getElementById('search-pokemon').value;
     search = search.toLowerCase();
@@ -134,16 +127,14 @@ function definePokemon(search, found) {
         let name = allPokemon[i].name;
         let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
         let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
-        whereIsTheMonster(name, types, i, search, found, img);
+        whereIsThePokemon(name, types, i, search, found, img);
     };
 }
 
 
-function whereIsTheMonster(name, types, i, search, found, img) {
-    if (pokemon.toLowerCase().includes(search) && name == name || name.toLowerCase().includes(search) && name == name || pokeid.includes(search) && name == name) {
-        found.innerHTML += searchPreviewTemp(name, i)
+function whereIsThePokemon(name, types, i, search, found, img) {
+    if (name.toLowerCase().includes(search)) {
+        found.innerHTML += generateMainHtml(i, name, types, img);
         document.getElementById(`background-color-main(${i})`).classList.add(types);
-    } else {
-        generateMainHtml(i, name, types, img);
     }
 }
