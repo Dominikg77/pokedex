@@ -1,4 +1,3 @@
-let currentPokoemon
 const url = 'https://pokeapi.co/api/v2/pokemon/';
 let allPokemon = [];
 let numberOfPokemon = 30;
@@ -13,7 +12,6 @@ async function loadPokemon() { // async benötigetes da es await drin hat
         renderPokemonInfoMain(i);
         document.getElementById(`load-sccren`).classList.add(`d-none`);
     }
-
 }
 
 
