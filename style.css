@@ -13,6 +13,23 @@
         font-family: Arial, Helvetica, sans-serif;
     }
     
+    .link {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    a {
+        margin-top: 4px;
+        margin-bottom: 4px;
+        font-size: 16px;
+        color: white;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
     nav h1 {
         color: #FF8C00;
         font-weight: 900;

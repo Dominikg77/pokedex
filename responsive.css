@@ -10,12 +10,20 @@
 }
 
 @media screen and (max-width: 800px) {
+    .link {
+        margin-top: -20px;
+        padding-bottom: 25px;
+    }
+    a {
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
     .loading-img {
         width: 220px;
         height: 220px;
     }
     nav {
-        margin-top: -12px;
+        margin-top: -10px;
         flex-direction: column;
         font-size: 18px;
     }
@@ -40,7 +48,7 @@
         font-size: 14px;
     }
     #pokedex {
-        padding-top: 150px;
+        padding-top: 200px;
     }
     .container-main {
         width: 250px;

@@ -100,6 +100,7 @@ function newNumber() {
     mainContainer.innerHTML = '';
     let inputLoad = document.getElementById(`number-pokemons`).value;
     numberOfPokemon = parseInt(inputLoad);
+    allPokemon = [];
 
     if (inputLoad > 0) {
         loadPokemon();
