@@ -136,6 +136,7 @@
         -moz-border-radius: 12px;
         -ms-border-radius: 12px;
         -o-border-radius: 12px;
+        cursor: pointer;
     }
     
     .nav-right button:hover {
@@ -183,6 +184,7 @@
         -moz-border-radius: 25px 40px 25px 40px;
         -ms-border-radius: 25px 40px 25px 40px;
         -o-border-radius: 25px 40px 25px 40px;
+        cursor: pointer;
     }
     
     .container-main:hover {
@@ -365,6 +367,7 @@
         width: 60px !important;
         height: 60px !important;
         padding-top: -24px;
+        cursor: pointer;
     }
     
     .spez-info {
