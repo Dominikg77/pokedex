@@ -2,22 +2,28 @@ const url = 'https://pokeapi.co/api/v2/pokemon/';
 let allPokemon = [];
 let numberOfPokemon = 30;
 
-
-async function loadPokemon() { // async benötigetes da es await drin hat
+/**
+ * Load the Pokemon from the API
+ * Show the load screen until the Pokemon are loaded and 1.6 seconds has passed until the graphic is ful
+ */
+async function loadPokemon() {
     for (let i = 0; i < numberOfPokemon; i++) {
         const pokemon_url = url + (i + 1);
-        let response = await fetch(pokemon_url); // fetch() funktion zum auf API zugreifen / await ist ein warte befehl
-        currentPokemon = await response.json(); // wird zu einem JSON /
-        allPokemon.push(currentPokemon); // Json an ein Array zu weisen
+        let response = await fetch(pokemon_url);
+        currentPokemon = await response.json();
+        allPokemon.push(currentPokemon);
         renderPokemonInfoMain(i);
-        document.getElementById(`load-sccren`).classList.add(`d-none`);
+        setTimeout(() => {
+            document.getElementById(`load-sccren`).classList.add(`d-none`);
+        }, "1600")
+
     }
 }
 
 
 function renderPokemonInfoMain(i) {
-    let name = allPokemon[i][`name`]; // zugreifen auf den namen 
-    let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
+    let name = allPokemon[i][`name`];
+    let types = allPokemon[i][`types`][0][`type`][`name`];
     let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML += '';
@@ -25,16 +31,20 @@ function renderPokemonInfoMain(i) {
     bgColor(i);
 }
 
-
+/**
+ * function for the different backgrounds of the Pokemon cards
+ * @param {sting} i = index which pokemon
+ */
 function bgColor(i) {
-
     let name = allPokemon[i].types[0].type.name;
-    if (name == name) {
-        document.getElementById(`background-color-main(${i})`).classList.add(name)
-    };
+    if (name) document.getElementById(`background-color-main(${i})`).classList.add(name);
+
 }
 
-
+/**
+ * load the dialog or the detailed data such as weight, size ...
+ * @param {sting} i = index which pokemon
+ */
 function renderDialog(i) {
     let name = allPokemon[i][`name`];
     let types = allPokemon[i][`types`][0][`type`][`name`];
@@ -86,15 +96,19 @@ function moveLeft(i) {
     renderDialog(i);
 }
 
-
+/**
+ * function for the different card color of the Pokemon cards
+ * @param {sting} i = index which pokemon
+ */
 function cardColor(i) {
     let name = allPokemon[i].types[0].type.name;
-    if (name == name) {
-        document.getElementById(`background-color-card(${i})`).classList.add(name)
-    }
+    if (name) document.getElementById(`background-color-card(${i})`).classList.add(name)
+
 }
 
-
+/**
+ * function for more or less Pokemon, 30 are displayed at the beginning
+ */
 function newNumber() {
     let mainContainer = document.getElementById('pokedex');
     mainContainer.innerHTML = '';
@@ -110,7 +124,9 @@ function newNumber() {
     }
 }
 
-
+/**
+ * filter the names, a small search function
+ */
 function filterNames() {
     let search = document.getElementById('search-pokemon').value;
     search = search.toLowerCase();
@@ -124,7 +140,7 @@ function filterNames() {
 function definePokemon(search, found) {
     for (let i = 0; i < allPokemon.length; i++) {
         let name = allPokemon[i].name;
-        let types = allPokemon[i][`types`][0][`type`][`name`]; // console findet man die nötigen adressen und dann so zugreifen 
+        let types = allPokemon[i][`types`][0][`type`][`name`];
         let img = allPokemon[i][`sprites`][`other`][`dream_world`][`front_default`];
         whereIsThePokemon(name, types, i, search, found, img);
     };

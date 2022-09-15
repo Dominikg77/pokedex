@@ -9,7 +9,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 875px) {
     .link {
         margin-top: -20px;
         padding-bottom: 25px;
